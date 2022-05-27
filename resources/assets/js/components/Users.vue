@@ -109,6 +109,10 @@ import Axios from 'axios';
             }
         },
         methods: {
+            editUser(user){
+                this.form.reset();
+                $('#addNew').modal('show');
+            },
             loadUser(){
                 // this.form.get('api/user');
                 Axios.get("api/user").then(({ data }) => (this.users = data.data));
