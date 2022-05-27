@@ -29,6 +29,7 @@
         "install": "^0.13.0",
         "sweetalert2": "^7.26.12",
         "vform": "^1.0.0",
+        "vue-progressbar": "^0.7.5",
         "vue-router": "^3.5.1"
     }
 }

@@ -75,6 +75,7 @@ class RadiologyController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $radiology = Radiology::findOrFail($id);
+        $radiology->delete();
     }
 }

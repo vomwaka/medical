@@ -75,6 +75,7 @@ class LaboratoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $lab = Laboratory::findOrFail($id);
+        $lab->delete();
     }
 }

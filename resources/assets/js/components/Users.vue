@@ -26,13 +26,13 @@
 <td>{{user.id}}</td>
 <td>{{user.name}}</td>
 <td>{{user.email}}</td>
-<td>{{user.type}}</td>
+<td>{{user.type | upText}}</td>
 <td>
     <a @click="editModal(user)">
         <i class="fa fa-edit"></i>
     </a>
     /
-    <a href="" @click="deleteUser(user.id)">
+    <a @click="deleteUser(user.id)">
         <i class="fa fa-trash"></i>
     </a>
 </td>
@@ -95,6 +95,7 @@
 
 <script>
 import Axios from 'axios';
+import swal from 'sweetalert2';
 
     export default {
         data() {
@@ -109,6 +110,30 @@ import Axios from 'axios';
             }
         },
         methods: {
+            deleteUser(id){
+                swal({
+                    title: 'Are you sure?',
+                    text: "You won't be able to revert this",
+                    type: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, Delete it!'
+
+                }).then((result) => {
+                    this.form.delete('app/user/'+id).then(()=>{
+                         swal(
+                        'Deleted!',
+                        'Your Record has been Deleted.',
+                        'success'
+                    )
+                    }).catch(()=>{
+                        swal("Failed", "There was something wrong.", "Warning")
+                    });  
+                   
+                })
+            },
+
             editModal(user){
                 this.form.reset();
                 $('#addNew').modal('show');
@@ -124,7 +149,9 @@ import Axios from 'axios';
                 Axios.get("api/user").then(({ data }) => (this.users = data.data));
             },
             createUser(){
+                
                 this.form.post('api/user');
+              
                 $('#addNew').modal('hide')
                 toast({
                     type: 'Success',

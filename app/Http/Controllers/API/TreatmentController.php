@@ -77,6 +77,7 @@ class TreatmentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $treatment = Treatment::findOrFail($id);
+        $treatment->delete();
     }
 }

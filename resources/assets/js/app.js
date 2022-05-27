@@ -22,6 +22,17 @@ const toast = swal.mixin({
   timer: 3000
 })
 
+import VueProgressBar from 'vue-progressbar'
+Vue.use(VueProgressBar, {
+  color: 'rgb(143, 255, 199)',
+  failedcolor: 'red',
+  height: '3px'
+})
+
+Vue.filter('upText', function(text){
+  return text.charAt(0).toUpperCase() + text.slice(1);
+})
+
 window.toast = swal;
 
 window.Form = Form;

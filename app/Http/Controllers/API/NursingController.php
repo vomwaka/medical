@@ -75,6 +75,7 @@ class NursingController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $nurse = Nursing::findOrFail($id);
+        $nurse->delete();
     }
 }

@@ -32,11 +32,11 @@
 <td>{{lens.result}}</td>
 <td>{{lens.lens}}</td>
 <td>
-    <a href="" @click="editModal(lens)">
+    <a @click="editModal(lens)">
         <i class="fa fa-edit"></i>
     </a>
     /
-    <a href="">
+    <a @click="deleteRecord(lens.id)">
         <i class="fa fa-trash"></i>
     </a>
 </td>
@@ -125,6 +125,29 @@ import Axios from 'axios';
             }
         },
         methods: {
+            deleteRecord(id){
+                swal({
+                    title: 'Are you sure?',
+                    text: "You won't be able to revert this",
+                    type: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, Delete it!'
+
+                }).then((result) => {
+                    this.form.delete('app/optic/'+id).then(()=>{
+                         swal(
+                        'Deleted!',
+                        'Your Record has been Deleted.',
+                        'success'
+                    )
+                    }).catch(()=>{
+                        swal("Failed", "There was something wrong.", "Warning")
+                    });  
+                   
+                })
+            },
             editModal(lens){
                 this.form.reset();
                 $('#addNew').modal('show');

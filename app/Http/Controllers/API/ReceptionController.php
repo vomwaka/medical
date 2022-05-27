@@ -73,6 +73,7 @@ class ReceptionController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $reception = Reception::findOrFail($id);
+        $reception->delete();
     }
 }

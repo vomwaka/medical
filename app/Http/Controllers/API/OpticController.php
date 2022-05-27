@@ -77,6 +77,7 @@ class OpticController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $optical = Optic::findOrFail($id);
+        $optical->delete();
     }
 }
