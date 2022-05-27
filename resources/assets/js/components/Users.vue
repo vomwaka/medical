@@ -5,7 +5,7 @@
 <div class="card-header">
 <h3 class="card-title">Users Management</h3>
 <div class="card-tools">
- <button class="btn btn-success" data-toggle="modal" data-target="#addNew">Add New <i class="fas fa-user-plus"></i></button>
+ <button class="btn btn-success" @click="newModal">Add New <i class="fas fa-user-plus"></i></button>
 </div>
 </div>
 
@@ -28,11 +28,11 @@
 <td>{{user.email}}</td>
 <td>{{user.type}}</td>
 <td>
-    <a href="">
+    <a @click="editModal(user)">
         <i class="fa fa-edit"></i>
     </a>
     /
-    <a href="">
+    <a href="" @click="deleteUser(user.id)">
         <i class="fa fa-trash"></i>
     </a>
 </td>
@@ -49,7 +49,7 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="addNewLabel">Add New User</h5>
+        <h5 class="modal-title" id="addNewLabel">Add New User/Edit User</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
@@ -109,7 +109,13 @@ import Axios from 'axios';
             }
         },
         methods: {
-            editUser(user){
+            editModal(user){
+                this.form.reset();
+                $('#addNew').modal('show');
+                this.form.fill(user);
+            },
+
+            newModal(user){
                 this.form.reset();
                 $('#addNew').modal('show');
             },

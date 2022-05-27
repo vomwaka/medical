@@ -5,7 +5,7 @@
 <div class="card-header">
 <h3 class="card-title">Treatment Management</h3>
 <div class="card-tools">
- <button class="btn btn-success" data-toggle="modal" data-target="#addNew">Add New <i class="fas fa-user-plus"></i></button>
+ <button class="btn btn-success" @click="newModal">Add New <i class="fas fa-user-plus"></i></button>
 </div>
 </div>
 
@@ -32,7 +32,7 @@
 <td>{{lens.result}}</td>
 <td>{{lens.lens}}</td>
 <td>
-    <a href="">
+    <a href="" @click="editModal(lens)">
         <i class="fa fa-edit"></i>
     </a>
     /
@@ -125,6 +125,16 @@ import Axios from 'axios';
             }
         },
         methods: {
+            editModal(lens){
+                this.form.reset();
+                $('#addNew').modal('show');
+                this.form.fill(lens);
+            },
+
+            newModal(rad){
+                this.form.reset();
+                $('#addNew').modal('show');
+            },
             loadOpticalResult(){
                 Axios.get("api/optic").then(({ data }) => (this.opticals = data.data));
             },

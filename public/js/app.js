@@ -1921,6 +1921,15 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
+    editModal: function editModal(lab) {
+      this.form.reset();
+      $('#addNew').modal('show');
+      this.form.fill(lab);
+    },
+    newModal: function newModal(lab) {
+      this.form.reset();
+      $('#addNew').modal('show');
+    },
     loadResult: function loadResult() {
       var _this = this;
 
@@ -1931,6 +1940,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     assignResult: function assignResult() {
       this.form.post('api/laboratory');
+      $('#addNew').modal('hide');
       toast({
         type: 'Success',
         title: 'Lab Result updated Succesfully'
@@ -2072,6 +2082,15 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
+    editModal: function editModal(nurse) {
+      this.form.reset();
+      $('#addNew').modal('show');
+      this.form.fill(nurse);
+    },
+    newModal: function newModal(nurse) {
+      this.form.reset();
+      $('#addNew').modal('show');
+    },
     loadYourPatient: function loadYourPatient() {
       var _this = this;
 
@@ -2083,6 +2102,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     assignPatient: function assignPatient() {
       this.form.post('api/nursing');
+      $('#addNew').modal('hide');
       toast({
         type: 'Success',
         title: 'Patient refered Succesfully'
@@ -2232,6 +2252,15 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
+    editModal: function editModal(lens) {
+      this.form.reset();
+      $('#addNew').modal('show');
+      this.form.fill(lens);
+    },
+    newModal: function newModal(rad) {
+      this.form.reset();
+      $('#addNew').modal('show');
+    },
     loadOpticalResult: function loadOpticalResult() {
       var _this = this;
 
@@ -2242,6 +2271,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     loadOptical: function loadOptical() {
       this.form.post('api/optic');
+      $('#addNew').modal('hide');
       toast({
         type: 'Success',
         title: 'Patient result updated Succesfully'
@@ -2542,6 +2572,15 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
+    editModal: function editModal(rad) {
+      this.form.reset();
+      $('#addNew').modal('show');
+      this.form.fill(rad);
+    },
+    newModal: function newModal(rad) {
+      this.form.reset();
+      $('#addNew').modal('show');
+    },
     loadResult: function loadResult() {
       var _this = this;
 
@@ -2552,6 +2591,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     assignResult: function assignResult() {
       this.form.post('api/radiology');
+      $('#addNew').modal('hide');
       toast({
         type: 'Success',
         title: 'Radiology result updated Succesfully'
@@ -2685,6 +2725,15 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
+    editModal: function editModal(patient) {
+      this.form.reset();
+      $('#addNew').modal('show');
+      this.form.fill(patient);
+    },
+    newModal: function newModal(patient) {
+      this.form.reset();
+      $('#addNew').modal('show');
+    },
     loadPatient: function loadPatient() {
       var _this = this;
 
@@ -2696,6 +2745,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     createPatient: function createPatient() {
       this.form.post('api/reception');
+      $('#addNew').modal('hide');
       toast({
         type: 'Success',
         title: 'Patient checked in Succesfully'
@@ -2845,6 +2895,15 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
+    editModal: function editModal(treat) {
+      this.form.reset();
+      $('#addNew').modal('show');
+      this.form.fill(treat);
+    },
+    newModal: function newModal(treat) {
+      this.form.reset();
+      $('#addNew').modal('show');
+    },
     loadTreatmentResult: function loadTreatmentResult() {
       var _this = this;
 
@@ -2989,6 +3048,15 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
+    editModal: function editModal(user) {
+      this.form.reset();
+      $('#addNew').modal('show');
+      this.form.fill(user);
+    },
+    newModal: function newModal(user) {
+      this.form.reset();
+      $('#addNew').modal('show');
+    },
     loadUser: function loadUser() {
       var _this = this;
 
@@ -42476,11 +42544,23 @@ var render = function () {
   return _c("div", { staticClass: "container" }, [
     _c("div", { staticClass: "col-12" }, [
       _c("div", { staticClass: "card" }, [
-        _vm._m(0),
+        _c("div", { staticClass: "card-header" }, [
+          _c("h3", { staticClass: "card-title" }, [
+            _vm._v("Laboratory Management"),
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-tools" }, [
+            _c(
+              "button",
+              { staticClass: "btn btn-success", on: { click: _vm.newModal } },
+              [_vm._v("Add New "), _c("i", { staticClass: "fas fa-user-plus" })]
+            ),
+          ]),
+        ]),
         _vm._v(" "),
         _c("div", { staticClass: "card-body table-responsive p-0" }, [
           _c("table", { staticClass: "table table-hover text-nowrap" }, [
-            _vm._m(1),
+            _vm._m(0),
             _vm._v(" "),
             _c(
               "tbody",
@@ -42496,7 +42576,21 @@ var render = function () {
                   _vm._v(" "),
                   _c("td", [_vm._v(_vm._s(lab.result))]),
                   _vm._v(" "),
-                  _vm._m(2, true),
+                  _c("td", [
+                    _c(
+                      "a",
+                      {
+                        on: {
+                          click: function ($event) {
+                            return _vm.editModal(lab)
+                          },
+                        },
+                      },
+                      [_c("i", { staticClass: "fa fa-edit" })]
+                    ),
+                    _vm._v("\n    /\n    "),
+                    _vm._m(1, true),
+                  ]),
                 ])
               }),
               0
@@ -42527,7 +42621,7 @@ var render = function () {
           },
           [
             _c("div", { staticClass: "modal-content" }, [
-              _vm._m(3),
+              _vm._m(2),
               _vm._v(" "),
               _c("div", { staticClass: "modal-body" }, [
                 _c(
@@ -42757,7 +42851,7 @@ var render = function () {
                       1
                     ),
                     _vm._v(" "),
-                    _vm._m(4),
+                    _vm._m(3),
                   ]
                 ),
               ]),
@@ -42769,27 +42863,6 @@ var render = function () {
   ])
 }
 var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-header" }, [
-      _c("h3", { staticClass: "card-title" }, [
-        _vm._v("Laboratory Management"),
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "card-tools" }, [
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-success",
-            attrs: { "data-toggle": "modal", "data-target": "#addNew" },
-          },
-          [_vm._v("Add New "), _c("i", { staticClass: "fas fa-user-plus" })]
-        ),
-      ]),
-    ])
-  },
   function () {
     var _vm = this
     var _h = _vm.$createElement
@@ -42814,14 +42887,8 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("td", [
-      _c("a", { attrs: { href: "" } }, [
-        _c("i", { staticClass: "fa fa-edit" }),
-      ]),
-      _vm._v("\n    /\n    "),
-      _c("a", { attrs: { href: "" } }, [
-        _c("i", { staticClass: "fa fa-trash" }),
-      ]),
+    return _c("a", { attrs: { href: "" } }, [
+      _c("i", { staticClass: "fa fa-trash" }),
     ])
   },
   function () {
@@ -42893,11 +42960,21 @@ var render = function () {
   return _c("div", { staticClass: "container" }, [
     _c("div", { staticClass: "col-12" }, [
       _c("div", { staticClass: "card" }, [
-        _vm._m(0),
+        _c("div", { staticClass: "card-header" }, [
+          _c("h3", { staticClass: "card-title" }, [_vm._v("Nurse Management")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-tools" }, [
+            _c(
+              "button",
+              { staticClass: "btn btn-success", on: { click: _vm.newModal } },
+              [_vm._v("Add New "), _c("i", { staticClass: "fas fa-user-plus" })]
+            ),
+          ]),
+        ]),
         _vm._v(" "),
         _c("div", { staticClass: "card-body table-responsive p-0" }, [
           _c("table", { staticClass: "table table-hover text-nowrap" }, [
-            _vm._m(1),
+            _vm._m(0),
             _vm._v(" "),
             _c(
               "tbody",
@@ -42913,7 +42990,21 @@ var render = function () {
                   _vm._v(" "),
                   _c("td", [_vm._v(_vm._s(nurse.recommendation))]),
                   _vm._v(" "),
-                  _vm._m(2, true),
+                  _c("td", [
+                    _c(
+                      "a",
+                      {
+                        on: {
+                          click: function ($event) {
+                            return _vm.editModal(nurse)
+                          },
+                        },
+                      },
+                      [_c("i", { staticClass: "fa fa-edit" })]
+                    ),
+                    _vm._v("\n    /\n    "),
+                    _vm._m(1, true),
+                  ]),
                 ])
               }),
               0
@@ -42944,7 +43035,7 @@ var render = function () {
           },
           [
             _c("div", { staticClass: "modal-content" }, [
-              _vm._m(3),
+              _vm._m(2),
               _vm._v(" "),
               _c("div", { staticClass: "modal-body" }, [
                 _c(
@@ -43178,7 +43269,7 @@ var render = function () {
                       1
                     ),
                     _vm._v(" "),
-                    _vm._m(4),
+                    _vm._m(3),
                   ]
                 ),
               ]),
@@ -43190,25 +43281,6 @@ var render = function () {
   ])
 }
 var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-header" }, [
-      _c("h3", { staticClass: "card-title" }, [_vm._v("Nurse Management")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "card-tools" }, [
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-success",
-            attrs: { "data-toggle": "modal", "data-target": "#addNew" },
-          },
-          [_vm._v("Add New "), _c("i", { staticClass: "fas fa-user-plus" })]
-        ),
-      ]),
-    ])
-  },
   function () {
     var _vm = this
     var _h = _vm.$createElement
@@ -43233,14 +43305,8 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("td", [
-      _c("a", { attrs: { href: "" } }, [
-        _c("i", { staticClass: "fa fa-edit" }),
-      ]),
-      _vm._v("\n    /\n    "),
-      _c("a", { attrs: { href: "" } }, [
-        _c("i", { staticClass: "fa fa-trash" }),
-      ]),
+    return _c("a", { attrs: { href: "" } }, [
+      _c("i", { staticClass: "fa fa-trash" }),
     ])
   },
   function () {
@@ -43312,11 +43378,23 @@ var render = function () {
   return _c("div", { staticClass: "container" }, [
     _c("div", { staticClass: "col-12" }, [
       _c("div", { staticClass: "card" }, [
-        _vm._m(0),
+        _c("div", { staticClass: "card-header" }, [
+          _c("h3", { staticClass: "card-title" }, [
+            _vm._v("Treatment Management"),
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-tools" }, [
+            _c(
+              "button",
+              { staticClass: "btn btn-success", on: { click: _vm.newModal } },
+              [_vm._v("Add New "), _c("i", { staticClass: "fas fa-user-plus" })]
+            ),
+          ]),
+        ]),
         _vm._v(" "),
         _c("div", { staticClass: "card-body table-responsive p-0" }, [
           _c("table", { staticClass: "table table-hover text-nowrap" }, [
-            _vm._m(1),
+            _vm._m(0),
             _vm._v(" "),
             _c(
               "tbody",
@@ -43334,7 +43412,22 @@ var render = function () {
                   _vm._v(" "),
                   _c("td", [_vm._v(_vm._s(lens.lens))]),
                   _vm._v(" "),
-                  _vm._m(2, true),
+                  _c("td", [
+                    _c(
+                      "a",
+                      {
+                        attrs: { href: "" },
+                        on: {
+                          click: function ($event) {
+                            return _vm.editModal(lens)
+                          },
+                        },
+                      },
+                      [_c("i", { staticClass: "fa fa-edit" })]
+                    ),
+                    _vm._v("\n    /\n    "),
+                    _vm._m(1, true),
+                  ]),
                 ])
               }),
               0
@@ -43365,7 +43458,7 @@ var render = function () {
           },
           [
             _c("div", { staticClass: "modal-content" }, [
-              _vm._m(3),
+              _vm._m(2),
               _vm._v(" "),
               _c("div", { staticClass: "modal-body" }, [
                 _c(
@@ -43633,7 +43726,7 @@ var render = function () {
                       1
                     ),
                     _vm._v(" "),
-                    _vm._m(4),
+                    _vm._m(3),
                   ]
                 ),
               ]),
@@ -43645,25 +43738,6 @@ var render = function () {
   ])
 }
 var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-header" }, [
-      _c("h3", { staticClass: "card-title" }, [_vm._v("Treatment Management")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "card-tools" }, [
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-success",
-            attrs: { "data-toggle": "modal", "data-target": "#addNew" },
-          },
-          [_vm._v("Add New "), _c("i", { staticClass: "fas fa-user-plus" })]
-        ),
-      ]),
-    ])
-  },
   function () {
     var _vm = this
     var _h = _vm.$createElement
@@ -43690,14 +43764,8 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("td", [
-      _c("a", { attrs: { href: "" } }, [
-        _c("i", { staticClass: "fa fa-edit" }),
-      ]),
-      _vm._v("\n    /\n    "),
-      _c("a", { attrs: { href: "" } }, [
-        _c("i", { staticClass: "fa fa-trash" }),
-      ]),
+    return _c("a", { attrs: { href: "" } }, [
+      _c("i", { staticClass: "fa fa-trash" }),
     ])
   },
   function () {
@@ -44226,11 +44294,23 @@ var render = function () {
   return _c("div", { staticClass: "container" }, [
     _c("div", { staticClass: "col-12" }, [
       _c("div", { staticClass: "card" }, [
-        _vm._m(0),
+        _c("div", { staticClass: "card-header" }, [
+          _c("h3", { staticClass: "card-title" }, [
+            _vm._v("Radiology Management"),
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-tools" }, [
+            _c(
+              "button",
+              { staticClass: "btn btn-success", on: { click: _vm.newModal } },
+              [_vm._v("Add New "), _c("i", { staticClass: "fas fa-user-plus" })]
+            ),
+          ]),
+        ]),
         _vm._v(" "),
         _c("div", { staticClass: "card-body table-responsive p-0" }, [
           _c("table", { staticClass: "table table-hover text-nowrap" }, [
-            _vm._m(1),
+            _vm._m(0),
             _vm._v(" "),
             _c(
               "tbody",
@@ -44246,7 +44326,21 @@ var render = function () {
                   _vm._v(" "),
                   _c("td", [_vm._v(_vm._s(rad.result))]),
                   _vm._v(" "),
-                  _vm._m(2, true),
+                  _c("td", [
+                    _c(
+                      "a",
+                      {
+                        on: {
+                          click: function ($event) {
+                            return _vm.editModal(rad)
+                          },
+                        },
+                      },
+                      [_c("i", { staticClass: "fa fa-edit" })]
+                    ),
+                    _vm._v("\n    /\n    "),
+                    _vm._m(1, true),
+                  ]),
                 ])
               }),
               0
@@ -44277,7 +44371,7 @@ var render = function () {
           },
           [
             _c("div", { staticClass: "modal-content" }, [
-              _vm._m(3),
+              _vm._m(2),
               _vm._v(" "),
               _c("div", { staticClass: "modal-body" }, [
                 _c(
@@ -44507,7 +44601,7 @@ var render = function () {
                       1
                     ),
                     _vm._v(" "),
-                    _vm._m(4),
+                    _vm._m(3),
                   ]
                 ),
               ]),
@@ -44519,25 +44613,6 @@ var render = function () {
   ])
 }
 var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-header" }, [
-      _c("h3", { staticClass: "card-title" }, [_vm._v("Radiology Management")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "card-tools" }, [
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-success",
-            attrs: { "data-toggle": "modal", "data-target": "#addNew" },
-          },
-          [_vm._v("Add New "), _c("i", { staticClass: "fas fa-user-plus" })]
-        ),
-      ]),
-    ])
-  },
   function () {
     var _vm = this
     var _h = _vm.$createElement
@@ -44562,14 +44637,8 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("td", [
-      _c("a", { attrs: { href: "" } }, [
-        _c("i", { staticClass: "fa fa-edit" }),
-      ]),
-      _vm._v("\n    /\n    "),
-      _c("a", { attrs: { href: "" } }, [
-        _c("i", { staticClass: "fa fa-trash" }),
-      ]),
+    return _c("a", { attrs: { href: "" } }, [
+      _c("i", { staticClass: "fa fa-trash" }),
     ])
   },
   function () {
@@ -44641,11 +44710,23 @@ var render = function () {
   return _c("div", { staticClass: "container" }, [
     _c("div", { staticClass: "col-12" }, [
       _c("div", { staticClass: "card" }, [
-        _vm._m(0),
+        _c("div", { staticClass: "card-header" }, [
+          _c("h3", { staticClass: "card-title" }, [
+            _vm._v("Patient Management"),
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-tools" }, [
+            _c(
+              "button",
+              { staticClass: "btn btn-success", on: { click: _vm.newModal } },
+              [_vm._v("Add New "), _c("i", { staticClass: "fas fa-user-plus" })]
+            ),
+          ]),
+        ]),
         _vm._v(" "),
         _c("div", { staticClass: "card-body table-responsive p-0" }, [
           _c("table", { staticClass: "table table-hover text-nowrap" }, [
-            _vm._m(1),
+            _vm._m(0),
             _vm._v(" "),
             _c(
               "tbody",
@@ -44659,7 +44740,22 @@ var render = function () {
                   _vm._v(" "),
                   _c("td", [_vm._v(_vm._s(patient.symptoms))]),
                   _vm._v(" "),
-                  _vm._m(2, true),
+                  _c("td", [
+                    _c(
+                      "a",
+                      {
+                        attrs: { href: "" },
+                        on: {
+                          click: function ($event) {
+                            return _vm.editModal(patient)
+                          },
+                        },
+                      },
+                      [_c("i", { staticClass: "fa fa-edit" })]
+                    ),
+                    _vm._v("\n    /\n    "),
+                    _vm._m(1, true),
+                  ]),
                 ])
               }),
               0
@@ -44690,7 +44786,7 @@ var render = function () {
           },
           [
             _c("div", { staticClass: "modal-content" }, [
-              _vm._m(3),
+              _vm._m(2),
               _vm._v(" "),
               _c("div", { staticClass: "modal-body" }, [
                 _c(
@@ -44880,7 +44976,7 @@ var render = function () {
                       1
                     ),
                     _vm._v(" "),
-                    _vm._m(4),
+                    _vm._m(3),
                   ]
                 ),
               ]),
@@ -44892,25 +44988,6 @@ var render = function () {
   ])
 }
 var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-header" }, [
-      _c("h3", { staticClass: "card-title" }, [_vm._v("Patient Management")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "card-tools" }, [
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-success",
-            attrs: { "data-toggle": "modal", "data-target": "#addNew" },
-          },
-          [_vm._v("Add New "), _c("i", { staticClass: "fas fa-user-plus" })]
-        ),
-      ]),
-    ])
-  },
   function () {
     var _vm = this
     var _h = _vm.$createElement
@@ -44933,14 +45010,8 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("td", [
-      _c("a", { attrs: { href: "" } }, [
-        _c("i", { staticClass: "fa fa-edit" }),
-      ]),
-      _vm._v("\n    /\n    "),
-      _c("a", { attrs: { href: "" } }, [
-        _c("i", { staticClass: "fa fa-trash" }),
-      ]),
+    return _c("a", { attrs: { href: "" } }, [
+      _c("i", { staticClass: "fa fa-trash" }),
     ])
   },
   function () {
@@ -45012,11 +45083,23 @@ var render = function () {
   return _c("div", { staticClass: "container" }, [
     _c("div", { staticClass: "col-12" }, [
       _c("div", { staticClass: "card" }, [
-        _vm._m(0),
+        _c("div", { staticClass: "card-header" }, [
+          _c("h3", { staticClass: "card-title" }, [
+            _vm._v("Treatment Management"),
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-tools" }, [
+            _c(
+              "button",
+              { staticClass: "btn btn-success", on: { click: _vm.newModal } },
+              [_vm._v("Add New "), _c("i", { staticClass: "fas fa-user-plus" })]
+            ),
+          ]),
+        ]),
         _vm._v(" "),
         _c("div", { staticClass: "card-body table-responsive p-0" }, [
           _c("table", { staticClass: "table table-hover text-nowrap" }, [
-            _vm._m(1),
+            _vm._m(0),
             _vm._v(" "),
             _c(
               "tbody",
@@ -45034,7 +45117,21 @@ var render = function () {
                   _vm._v(" "),
                   _c("td", [_vm._v(_vm._s(treat.drugs))]),
                   _vm._v(" "),
-                  _vm._m(2, true),
+                  _c("td", [
+                    _c(
+                      "a",
+                      {
+                        on: {
+                          click: function ($event) {
+                            return _vm.editModal(treat)
+                          },
+                        },
+                      },
+                      [_c("i", { staticClass: "fa fa-edit" })]
+                    ),
+                    _vm._v("\n    /\n    "),
+                    _vm._m(1, true),
+                  ]),
                 ])
               }),
               0
@@ -45065,7 +45162,7 @@ var render = function () {
           },
           [
             _c("div", { staticClass: "modal-content" }, [
-              _vm._m(3),
+              _vm._m(2),
               _vm._v(" "),
               _c("div", { staticClass: "modal-body" }, [
                 _c(
@@ -45333,7 +45430,7 @@ var render = function () {
                       1
                     ),
                     _vm._v(" "),
-                    _vm._m(4),
+                    _vm._m(3),
                   ]
                 ),
               ]),
@@ -45345,25 +45442,6 @@ var render = function () {
   ])
 }
 var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-header" }, [
-      _c("h3", { staticClass: "card-title" }, [_vm._v("Treatment Management")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "card-tools" }, [
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-success",
-            attrs: { "data-toggle": "modal", "data-target": "#addNew" },
-          },
-          [_vm._v("Add New "), _c("i", { staticClass: "fas fa-user-plus" })]
-        ),
-      ]),
-    ])
-  },
   function () {
     var _vm = this
     var _h = _vm.$createElement
@@ -45390,14 +45468,8 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("td", [
-      _c("a", { attrs: { href: "" } }, [
-        _c("i", { staticClass: "fa fa-edit" }),
-      ]),
-      _vm._v("\n    /\n    "),
-      _c("a", { attrs: { href: "" } }, [
-        _c("i", { staticClass: "fa fa-trash" }),
-      ]),
+    return _c("a", { attrs: { href: "" } }, [
+      _c("i", { staticClass: "fa fa-trash" }),
     ])
   },
   function () {
@@ -45469,11 +45541,21 @@ var render = function () {
   return _c("div", { staticClass: "container" }, [
     _c("div", { staticClass: "col-12" }, [
       _c("div", { staticClass: "card" }, [
-        _vm._m(0),
+        _c("div", { staticClass: "card-header" }, [
+          _c("h3", { staticClass: "card-title" }, [_vm._v("Users Management")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-tools" }, [
+            _c(
+              "button",
+              { staticClass: "btn btn-success", on: { click: _vm.newModal } },
+              [_vm._v("Add New "), _c("i", { staticClass: "fas fa-user-plus" })]
+            ),
+          ]),
+        ]),
         _vm._v(" "),
         _c("div", { staticClass: "card-body table-responsive p-0" }, [
           _c("table", { staticClass: "table table-hover text-nowrap" }, [
-            _vm._m(1),
+            _vm._m(0),
             _vm._v(" "),
             _c(
               "tbody",
@@ -45487,7 +45569,32 @@ var render = function () {
                   _vm._v(" "),
                   _c("td", [_vm._v(_vm._s(user.type))]),
                   _vm._v(" "),
-                  _vm._m(2, true),
+                  _c("td", [
+                    _c(
+                      "a",
+                      {
+                        on: {
+                          click: function ($event) {
+                            return _vm.editModal(user)
+                          },
+                        },
+                      },
+                      [_c("i", { staticClass: "fa fa-edit" })]
+                    ),
+                    _vm._v("\n    /\n    "),
+                    _c(
+                      "a",
+                      {
+                        attrs: { href: "" },
+                        on: {
+                          click: function ($event) {
+                            return _vm.deleteUser(user.id)
+                          },
+                        },
+                      },
+                      [_c("i", { staticClass: "fa fa-trash" })]
+                    ),
+                  ]),
                 ])
               }),
               0
@@ -45518,7 +45625,7 @@ var render = function () {
           },
           [
             _c("div", { staticClass: "modal-content" }, [
-              _vm._m(3),
+              _vm._m(1),
               _vm._v(" "),
               _c("div", { staticClass: "modal-body" }, [
                 _c(
@@ -45690,7 +45797,7 @@ var render = function () {
                       1
                     ),
                     _vm._v(" "),
-                    _vm._m(4),
+                    _vm._m(2),
                   ]
                 ),
               ]),
@@ -45702,25 +45809,6 @@ var render = function () {
   ])
 }
 var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-header" }, [
-      _c("h3", { staticClass: "card-title" }, [_vm._v("Users Management")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "card-tools" }, [
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-success",
-            attrs: { "data-toggle": "modal", "data-target": "#addNew" },
-          },
-          [_vm._v("Add New "), _c("i", { staticClass: "fas fa-user-plus" })]
-        ),
-      ]),
-    ])
-  },
   function () {
     var _vm = this
     var _h = _vm.$createElement
@@ -45743,23 +45831,9 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("td", [
-      _c("a", { attrs: { href: "" } }, [
-        _c("i", { staticClass: "fa fa-edit" }),
-      ]),
-      _vm._v("\n    /\n    "),
-      _c("a", { attrs: { href: "" } }, [
-        _c("i", { staticClass: "fa fa-trash" }),
-      ]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
     return _c("div", { staticClass: "modal-header" }, [
       _c("h5", { staticClass: "modal-title", attrs: { id: "addNewLabel" } }, [
-        _vm._v("Add New User"),
+        _vm._v("Add New User/Edit User"),
       ]),
       _vm._v(" "),
       _c(

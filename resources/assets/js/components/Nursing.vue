@@ -5,7 +5,7 @@
 <div class="card-header">
 <h3 class="card-title">Nurse Management</h3>
 <div class="card-tools">
- <button class="btn btn-success" data-toggle="modal" data-target="#addNew">Add New <i class="fas fa-user-plus"></i></button>
+ <button class="btn btn-success" @click="newModal">Add New <i class="fas fa-user-plus"></i></button>
 </div>
 </div>
 
@@ -30,7 +30,7 @@
 <td>{{nurse.symptoms}}</td>
 <td>{{nurse.recommendation}}</td>
 <td>
-    <a href="">
+    <a @click="editModal(nurse)">
         <i class="fa fa-edit"></i>
     </a>
     /
@@ -117,6 +117,15 @@ import Axios from 'axios';
             }
         },
         methods: {
+            editModal(nurse){
+                this.form.reset();
+                $('#addNew').modal('show');
+                this.form.fill(nurse);
+            },
+            newModal(nurse){
+                this.form.reset();
+                $('#addNew').modal('show');
+            },
             loadYourPatient(){
                 // this.form.get('api/user');
                 Axios.get("api/nursing").then(({ data }) => (this.nurses = data.data));

@@ -5,7 +5,7 @@
 <div class="card-header">
 <h3 class="card-title">Patient Management</h3>
 <div class="card-tools">
- <button class="btn btn-success" data-toggle="modal" data-target="#addNew">Add New <i class="fas fa-user-plus"></i></button>
+ <button class="btn btn-success" @click="newModal">Add New <i class="fas fa-user-plus"></i></button>
 </div>
 </div>
 
@@ -28,7 +28,7 @@
 <td>{{patient.patient_email}}</td>
 <td>{{patient.symptoms}}</td>
 <td>
-    <a href="">
+    <a href="" @click="editModal(patient)">
         <i class="fa fa-edit"></i>
     </a>
     /
@@ -109,6 +109,16 @@ import Axios from 'axios';
             }
         },
         methods: {
+            editModal(patient){
+                this.form.reset();
+                $('#addNew').modal('show');
+                this.form.fill(patient);
+            },
+
+            newModal(patient){
+                this.form.reset();
+                $('#addNew').modal('show');
+            },
             loadPatient(){
                 // this.form.get('api/user');
                 Axios.get("api/reception").then(({ data }) => (this.patients = data.data));

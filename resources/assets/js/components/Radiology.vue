@@ -5,7 +5,7 @@
 <div class="card-header">
 <h3 class="card-title">Radiology Management</h3>
 <div class="card-tools">
- <button class="btn btn-success" data-toggle="modal" data-target="#addNew">Add New <i class="fas fa-user-plus"></i></button>
+ <button class="btn btn-success" @click="newModal">Add New <i class="fas fa-user-plus"></i></button>
 </div>
 </div>
 
@@ -30,7 +30,7 @@
 <td>{{rad.symptoms}}</td>
 <td>{{rad.result}}</td>
 <td>
-    <a href="">
+    <a @click="editModal(rad)">
         <i class="fa fa-edit"></i>
     </a>
     /
@@ -117,6 +117,16 @@ import Axios from 'axios';
             }
         },
         methods: {
+            editModal(rad){
+                this.form.reset();
+                $('#addNew').modal('show');
+                this.form.fill(rad);
+            },
+
+            newModal(rad){
+                this.form.reset();
+                $('#addNew').modal('show');
+            },
             loadResult(){
                 Axios.get("api/radiology").then(({ data }) => (this.radiologies = data.data));
             },
