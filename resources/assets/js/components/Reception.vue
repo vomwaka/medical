@@ -115,6 +115,11 @@ import Axios from 'axios';
             },
             createPatient(){
                 this.form.post('api/reception');
+                $('#addNew').modal('hide')
+                toast({
+                    type: 'Success',
+                    title: 'Patient checked in Succesfully'
+                })
                 // Axios.post("api/user").then(({ data }) => (this.users = data));
             }
 

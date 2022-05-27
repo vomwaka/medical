@@ -130,6 +130,11 @@ import Axios from 'axios';
             },
             loadOptical(){
                 this.form.post('api/optic');
+                $('#addNew').modal('hide')
+                toast({
+                    type: 'Success',
+                    title: 'Patient result updated Succesfully'
+                })
             }
 
         },

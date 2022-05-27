@@ -115,6 +115,11 @@ import Axios from 'axios';
             },
             createUser(){
                 this.form.post('api/user');
+                $('#addNew').modal('hide')
+                toast({
+                    type: 'Success',
+                    title: 'User Addess Succesfully'
+                })
                 // Axios.post("api/user").then(({ data }) => (this.users = data));
             }
 

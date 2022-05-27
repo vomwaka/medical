@@ -12,6 +12,18 @@ window.Vue = require('vue');
 import { Form, HasError, AlertError } from 'vform';
 import Vue from 'vue';
 
+import swal from 'sweetalert2'
+window.swal = swal;
+
+const toast = swal.mixin({
+  toast: true,
+  position: 'top-end',
+  showConfirmButton: false,
+  timer: 3000
+})
+
+window.toast = swal;
+
 window.Form = Form;
 
 Vue.component(HasError.name, HasError)

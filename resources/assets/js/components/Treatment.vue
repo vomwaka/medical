@@ -130,6 +130,11 @@ import Axios from 'axios';
             },
             treatPatient(){
                 this.form.post('api/treatment');
+                $('#addNew').modal('hide')
+                toast({
+                    type: 'Success',
+                    title: 'Patient refered treatment Succesfully'
+                })
             }
 
         },

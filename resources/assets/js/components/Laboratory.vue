@@ -122,6 +122,11 @@ import Axios from 'axios';
             },
             assignResult(){
                 this.form.post('api/laboratory');
+                $('#addNew').modal('hide')
+                toast({
+                    type: 'Success',
+                    title: 'Lab Result updated Succesfully'
+                })
             }
 
         },

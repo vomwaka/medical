@@ -123,6 +123,11 @@ import Axios from 'axios';
             },
             assignPatient(){
                 this.form.post('api/nursing');
+                $('#addNew').modal('hide')
+                toast({
+                    type: 'Success',
+                    title: 'Patient refered Succesfully'
+                })
                 // Axios.post("api/user").then(({ data }) => (this.users = data));
             }
 

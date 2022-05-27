@@ -122,6 +122,11 @@ import Axios from 'axios';
             },
             assignResult(){
                 this.form.post('api/radiology');
+                $('#addNew').modal('hide')
+                toast({
+                    type: 'Success',
+                    title: 'Radiology result updated Succesfully'
+                })
             }
 
         },

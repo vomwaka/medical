@@ -272,6 +272,30 @@
     </router-link>
     </li>
 
+     <li class="nav-item">
+    <a href="#" class="nav-link">
+    <i class="nav-icon fas fa-folder"></i>
+    <p>
+    Reports
+    <i class="right fas fa-angle-left"></i>
+    </p>
+    </a>
+    <ul class="nav nav-treeview">
+    <li class="nav-item">
+    <router-link to="/users" class="nav-link">
+    <i class="nav-icon fas fa-file"></i>
+    <p>General Reports</p>
+    </router-link>
+    </li>
+    <li class="nav-item">
+    <a href="#" class="nav-link">
+    <i class="nav-icon fas fa-file"></i>
+    <p>Patient Reports</p>
+    </a>
+    </li>
+    </ul>
+    </li>
+
     <li class="nav-item">
    <!--  <a href="#" class="nav-link">
     <i class="nav-icon fas fa-power-off"></i>

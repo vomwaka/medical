@@ -130,6 +130,10 @@ import Axios from 'axios';
             },
             loadOptical(){
                 this.form.post('api/optic');
+                toast({
+                    type: 'Success',
+                    title: 'Profile Updated Succesfully'
+                })
             }
 
         },
